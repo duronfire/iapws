@@ -729,9 +729,9 @@ class HumidAir(object):
         self.Pv = (1-self.xa)*self.P
 
         # Saturation related properties
-        A_sat = self._eq(self.T, self.P)
-        if A_sat:
-            self.xa_sat = A_sat*MW/Ma/(1-A_sat*(1-MW/Ma))
+        self.A_sat = self._eq(self.T, self.P)
+        if self.A_sat:
+            self.xa_sat = self.A_sat*MW/Ma/(1-self.A_sat*(1-MW/Ma))
             self.RH = (1-self.xa)/(1-self.xa_sat)
         else:
             self.xa_sat = None
